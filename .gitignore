@@ -1,0 +1,11 @@
+# ignore extensionless files
+*
+!*/
+!*.*
+
+# ignore temporary/test files
+*temp*
+*test*
+
+# ignore worspace setting files
+**/.vscode/
