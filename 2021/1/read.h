@@ -2,10 +2,7 @@
 #define READ_H
 
 #include <iostream>
-#include <cstdio>
 #include <fstream>
-#include <string>
-#include <cstring>
 #include <vector>
 
 int read_file(std::vector<char> &buffer, std::string filename)
