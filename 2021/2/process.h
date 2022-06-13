@@ -1,5 +1,5 @@
-#ifndef READ_H
-#define READ_H
+#ifndef PROCESS_H
+#define PROCESS_H
 
 #include <iostream>
 #include <fstream>
@@ -12,12 +12,6 @@ typedef struct {
     direction dir;
     int dist;
 } command;
-
-template<typename T>
-void log(const T &output)
-{
-    std::cout << output << std::endl;
-}
 
 bool isnumeric(const std::string &s)
 {
@@ -81,7 +75,7 @@ std::vector<std::string> tokenize_buffer(const std::vector<char> &buffer)
     return tokens;
 }
 
-std::vector<command> parse(const std::vector<std::string> &buffer)
+std::vector<command> generate_commands(const std::vector<std::string> &buffer)
 {
     std::vector<command> commands;
     command c;
@@ -113,7 +107,7 @@ void traverse(const std::vector<command> &commands, int &h_pos, int &depth)
     }
 }
 
-void ntraverse(const std::vector<command> &commands, int &h_pos, int &depth, int &aim)
+void traverse(const std::vector<command> &commands, int &h_pos, int &depth, int &aim)
 {
     for(auto iter = begin(commands); iter != end(commands); ++iter) {
         switch(iter->dir) {

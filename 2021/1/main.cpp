@@ -12,12 +12,10 @@ int initialize(void)
     auto depths = tokenize_buffer(buffer);
 
     auto depth_increments = sweep(depths);
-    log<std::string>("Part 1 answer: ");
-    log<decltype(depth_increments)>(depth_increments);
+    std::cout << "Part 1 answer: " << depth_increments << "\n";
 
     auto grouped_depth_increments = sweep(grouped_depths(depths));
-    log<std::string>("Part 2 answer: ");
-    log<decltype(grouped_depth_increments)>(grouped_depth_increments);
+    std::cout << "Part 2 answer: " << grouped_depth_increments << "\n";
     
     return EXIT_SUCCESS;
 }

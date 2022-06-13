@@ -1,15 +1,9 @@
-#ifndef READ_H
-#define READ_H
+#ifndef PROCESS_H
+#define PROCESS_H
 
 #include <iostream>
 #include <fstream>
 #include <vector>
-
-template<typename T>
-void log(const T &output)
-{
-    std::cout << output << std::endl;
-}
 
 int read_file(std::vector<char> &buffer, std::string filename)
 {

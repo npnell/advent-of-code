@@ -4,26 +4,24 @@
 #include "process.h"
 
 int initialize(void) {
-    int h_pos = 0;
-    int depth = 0;
     std::vector<char> buffer;
     if(read_file(buffer, "input.txt")) {
         exit(EXIT_FAILURE);
     }
 
     auto tokens = tokenize_buffer(buffer); 
-    auto commands = parse(tokens);
+    auto commands = generate_commands(tokens);
 
+    int h_pos = 0;
+    int depth = 0;
     traverse(commands, h_pos, depth);
-    log<std::string>("Part 1 answer: ");
-    log<decltype(h_pos)>(h_pos*depth);
+    std::cout << "Part 1 answer: " << h_pos*depth << "\n";
 
     int nh_pos = 0;
     int ndepth = 0;
     int aim = 0;
-    ntraverse(commands, nh_pos, ndepth, aim);
-    log<std::string>("Part 2 answer: ");
-    log<decltype(nh_pos)>(nh_pos*ndepth);
+    traverse(commands, nh_pos, ndepth, aim);
+    std::cout << "Part 2 answer: " << nh_pos*ndepth << "\n";
     
     return EXIT_SUCCESS;
 }
