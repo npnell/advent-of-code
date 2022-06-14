@@ -102,4 +102,52 @@ std::string generate_gamma_rate(const std::vector<std::string> &tokens)
     return gamma_rate;
 }
 
+std::string get_oxygen_generator_rating(const std::vector<std::string> &tokens)
+{
+    std::vector<std::string> values(tokens);
+    int zero_count, test_char;
+
+    while(values.size() != 1) {
+        for(size_t i = 0; i < values[0].size(); ++i) {
+            zero_count = 0;
+            for(auto iter = values.begin(); iter != values.end(); ++iter) {
+                if((*iter)[i] == '0') {
+                    ++zero_count;
+                }
+            }
+            if(zero_count > (int)values.size()/2)
+                test_char = '0';
+            else test_char = '1';
+            auto endp = std::remove_if(values.begin(), values.end(),
+                    [test_char, i](std::string &s){ return s[i] != (char)test_char; });
+            values.erase(endp, values.end());
+        }
+    }
+    return values[0];
+}
+
+std::string get_co2_scrubber_rating(const std::vector<std::string> &tokens)
+{
+    std::vector<std::string> values(tokens);
+    int zero_count, test_char;
+
+    while(values.size() != 1) {
+        for(size_t i = 0; i < values[0].size() && values.size() != 1; ++i) {
+            zero_count = 0;
+            for(auto iter = values.begin(); iter != values.end(); ++iter) {
+                if((*iter)[i] == '0') {
+                    ++zero_count;
+                }
+            }
+            if(zero_count > (int)values.size()/2)
+                test_char = '1';
+            else test_char = '0';
+            auto endp = std::remove_if(values.begin(), values.end(),
+                    [test_char, i](std::string &s){ return s[i] != (char)test_char; });
+            values.erase(endp, values.end());
+        }
+    }
+    return values[0];
+}
+
 #endif
